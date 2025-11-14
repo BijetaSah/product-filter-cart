@@ -1,5 +1,7 @@
+import AppLayout from "./ui/AppLayout";
+
 function App() {
-  return <div className="text-5xl"></div>;
+  return <AppLayout />;
 }
 
 export default App;
