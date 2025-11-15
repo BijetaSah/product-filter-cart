@@ -88,7 +88,7 @@ export const products = [
     name: "Casual Sneakers",
     category: "Clothing",
     price: 70,
-    image: "/products/sneakers.jpg",
+    image: "/products/sneakers.webp",
   },
   {
     id: 14,
