@@ -1,14 +1,33 @@
+import { useDispatch, useSelector } from "react-redux";
 import { formatCurrency } from "../../helpers";
+import { addItem, getItemIsInCart } from "../cart/cartSlice";
 
-function ProductItem({ product }) {
-  const { image, name, price, category } = product;
+function ProductItem({ product, onToggleCartView }) {
+  const dispatch = useDispatch();
+  const { image, name, price, category, id } = product;
+  const isInCart = useSelector(getItemIsInCart(id));
+
+  function handleAddToCart() {
+    const quantity = 1;
+    const newItem = {
+      id,
+      image,
+      quantity,
+      name,
+      price,
+      category,
+      totalPrice: price * quantity,
+    };
+
+    dispatch(addItem(newItem));
+  }
 
   return (
     <div className="shadow-lg rounded-xl flex flex-col bg-white hover:translate-y-1 trasnition-translate duration-200 ">
       <img
         src={image}
         alt={`Image of ${name}`}
-        className="w-[10rem] h-[10rem] self-center py-2"
+        className="w-40 h-40 self-center py-2"
       />
 
       <div className="flex justify-between px-4 py-2">
@@ -20,9 +39,22 @@ function ProductItem({ product }) {
       <p className="text-xl font-semibold text-indigo-600 px-4 py-3">
         {formatCurrency(price)}{" "}
       </p>
-      <button className="bg-green-600 text-white py-3 hover:bg-green-700 font-semibold cursor-pointer">
-        Add to cart
-      </button>
+
+      {isInCart ? (
+        <button
+          className="bg-green-600 text-white py-3 hover:bg-green-700 font-semibold cursor-pointer mt-auto"
+          onClick={onToggleCartView}
+        >
+          Go to cart
+        </button>
+      ) : (
+        <button
+          className="bg-green-600 text-white py-3 hover:bg-green-700 font-semibold cursor-pointer mt-auto"
+          onClick={handleAddToCart}
+        >
+          Add to cart
+        </button>
+      )}
     </div>
   );
 }

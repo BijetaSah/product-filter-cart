@@ -13,7 +13,7 @@ const cartSlice = createSlice({
     },
     deleteItem(state, action) {
       // payload = id
-      state.cart = state.cart.filter((item) => item !== action.payload);
+      state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
     increaseItemQuantity(state, action) {
       // payload = id
@@ -24,8 +24,9 @@ const cartSlice = createSlice({
     decreaseItemQuantity(state, action) {
       // payload = id
       const item = state.cart.find((item) => item.id === action.payload);
-      item.quantity++;
+      item.quantity--;
       item.totalPrice = item.quantity * item.price;
+      if (item.quantity === 0) cartSlice.caseReducers.deleteItem(state, action);
     },
     clearCart(state) {
       state.cart = [];
@@ -48,5 +49,8 @@ export const getTotalQuantity = (state) =>
 
 export const getTotalPrice = (state) =>
   state.cart.cart.reduce((sum, curr) => sum + curr.totalPrice, 0);
+
+export const getItemIsInCart = (id) => (state) =>
+  state.cart.cart.some((item) => item.id === id);
 
 export const getCart = (state) => state.cart.cart;

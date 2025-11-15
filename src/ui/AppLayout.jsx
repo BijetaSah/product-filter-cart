@@ -5,6 +5,7 @@ import SearchBar from "../features/products/SearchBar";
 import ClearButton from "../features/products/ClearButton";
 import Products from "../features/products/Products";
 import Navbar from "./Navbar";
+import Cart from "../features/cart/Cart";
 
 function AppLayout() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -43,7 +44,7 @@ function AppLayout() {
   return (
     <>
       <Navbar onToggleCartView={handleCartView} />
-      <main className="bg-stone-100 py-10 w-full h-dvh">
+      <main className="bg-stone-100 py-10 w-full h-full">
         <FilterCategory
           selectedCategory={selectedCategory}
           onSelectCategory={handleSelectCategory}
@@ -53,8 +54,12 @@ function AppLayout() {
           onSearchChange={handleSearchQuerry}
         />
         <ClearButton onClearFilter={handleClearFilter} />
-        <Products products={filteredProducts} />
+        <Products
+          products={filteredProducts}
+          onCartTogggleView={handleCartView}
+        />
       </main>
+      {cartOpen && <Cart onCartTogggleView={handleCartView} />}
     </>
   );
 }
