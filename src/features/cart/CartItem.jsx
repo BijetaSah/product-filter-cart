@@ -2,7 +2,7 @@ import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { formatCurrency } from "../../helpers";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   decreaseItemQuantity,
   deleteItem,

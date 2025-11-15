@@ -1,16 +1,74 @@
-# React + Vite
+# 🛍️ Product Filter & Shopping Cart Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based product listing application with category filtering, search functionality, and a fully functional shopping cart built using **Redux Toolkit**.
 
-Currently, two official plugins are available:
+This project was created as part of an assignment to demonstrate:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- State management using React + Redux Toolkit
+- Product filtering by category
+- Search functionality
+- Cart management with quantity updates
+- Responsive UI and clean component structure
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### 🔍 Product List
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Displays all products with their **image, name, category, and price**.
+- Dynamic filtering based on:
+  - Category (`All`, `Electronics`, `Books`, `Clothing`)
+  - Search input
+
+### 🧰 Filters
+
+- Category filter (toggle behavior)
+- Search bar for real-time filtering
+- Clear button to reset filters
+
+### 🛒 Shopping Cart
+
+- Add items to cart
+- Shows **quantity**, **price**, and **total price**
+- Increase / decrease item quantity
+- Remove items from cart
+- Clear entire cart
+- Right-side sliding **Cart Drawer** with overlay
+- Cart count displayed in Navbar
+
+### 🎛️ State Management
+
+- Cart state handled using **Redux Toolkit**
+- Product state handled using **React useState**
+- Selectors for:
+  - Total cart quantity
+  - Total cart price
+  - Check if item is already in cart
+
+---
+
+## 🛠️ Tech Stack
+
+- **React**
+- **Redux Toolkit**
+- **React Redux**
+- **Tailwind CSS**
+- **Vite**
+- **React Icons**
+
+---
+
+## 📦 Installation & Setup
+
+### 1. Clone the repository
+
+     git clone https://github.com/BijetaSah/learnline-edustation-assignment.git
+
+### 2. Install dependencies
+
+    npm install
+
+### 3. Start the development server
+
+    npm run dev
