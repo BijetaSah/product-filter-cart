@@ -6,8 +6,10 @@ import ClearButton from "../features/products/ClearButton";
 import Products from "../features/products/Products";
 import Navbar from "./Navbar";
 import Cart from "../features/cart/Cart";
+import Loader from "./Loader";
 
 function AppLayout() {
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuerry, setSearchQuerry] = useState("");
@@ -16,10 +18,12 @@ function AppLayout() {
   useEffect(function () {
     async function getProducts() {
       try {
+        setIsLoading(true);
         const res = await fetch("https://fakestoreapi.com/products");
         if (!res.ok) throw new Error("Data could not be fetched");
         const data = await res.json();
         setProducts(data);
+        setIsLoading(false);
         console.log(data);
       } catch (err) {
         console.error(err.message);
@@ -71,6 +75,7 @@ function AppLayout() {
           onSearchChange={handleSearchQuerry}
         />
         <ClearButton onClearFilter={handleClearFilter} />
+        {isLoading && <Loader />}
         <Products
           products={filteredProducts}
           onCartTogggleView={handleCartView}
