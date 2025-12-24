@@ -31,7 +31,9 @@ function ProductItem({ product, onToggleCartView }) {
       />
 
       <div className="flex justify-between px-4 py-2">
-        <h2 className="text-lg font-semibold">{name}</h2>
+        <h2 className="text-lg font-semibold">
+          {title?.split(" ")?.slice(0, 4)?.join(" ")}
+        </h2>
         <span className="bg-indigo-50 text-indigo-600 text-sm px-4 py-1 lowercase rounded-full">
           {category}
         </span>

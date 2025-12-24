@@ -15,7 +15,7 @@ function CartItem({ cartItem }) {
   return (
     <div className="flex flex-col">
       <div className="flex gap-2 items-center justify-between">
-        <h4 className="">{title}</h4>
+        <h4 className="">{title?.split(" ")?.slice(0, 4)?.join(" ")}</h4>
         <p className="font-bold ">{formatCurrency(totalPrice)}</p>
 
         <div className="flex items-center gap-4">
